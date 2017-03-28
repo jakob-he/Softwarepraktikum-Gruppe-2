@@ -18,7 +18,15 @@
 	
 	<br>
 	<br>
-<form action="upload.php" method="post" enctype="multipart/form-data">
+
+<form action="php_script/GutenMorgen.php" method="get">
+    <p>Gib deinen Namen ein: <input type="text" name="benutzername" /></p>
+    <input type="submit" value="absenden" />
+</form>
+
+<br>
+
+<form action="php_script/upload.php" method="post" enctype="multipart/form-data">
     Select .CEL file to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload .CEL file" name="submit">
@@ -39,12 +47,11 @@
 
 
 <br>
-<?php
-echo "<form action='rtest.php' method='get'>";
-echo "<b>Chipimage</b><br> .CEL file: <input type='text' name='N' />";
-echo "<input type='submit' />";
-echo "</form>";
-?>
+
+<form action='php_script/rtest.php' method='get'>
+<b>Chipimage</b><br> .CEL file: <input type='text' name='N' />
+<input type='submit' />
+</form>
 <br>
 
 <!-- display Images
