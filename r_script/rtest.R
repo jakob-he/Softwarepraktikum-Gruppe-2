@@ -4,16 +4,19 @@ require("affydata")
 require("affyQCReport")
 
 files<-list.celfiles("../uploads/current")
-lastedited<-file.info("../uploads/current")[,4]
 
 celfiles<-ReadAffy(filenames=paste("../uploads/current/",files,sep=""))
-outputdir<-dir.create(paste("../output/",lastedited,sep=""))
-outputdirplot<-dir.create(paste("../output/",lastedited,"/plots/",sep=""))
-outputdirnorm<-dir.create(paste("../output/",lastedited,"/normalization/",sep=""))
+
+if (dir.exists("../output/current")){
+  file.rename("../output/current",paste("../output/",file.info("../output/current")[,4],sep=""))
+}
+outputdir<-dir.create("../output/current")
+outputdirplot<-dir.create("../output/current/plots/")
+outputdirnorm<-dir.create("../output/current/normalization/")
 
 #plots(density,RNA deg and MA)
 
-setwd(paste("../output/",lastedited,"/plots/",sep=""))
+setwd("../output/current/plots")
 
 png(filename = "Densityall.png")
 plotDensity.AffyBatch(celfiles,log=TRUE,which="both")
@@ -33,12 +36,3 @@ dev.off()
 png(filename = "Intesityboxplot.png")
 boxplot(celfiles,names=seq(from=1, to=length(celfiles),by=1),col="darkgreen",ylab="log intensity",xlab="Arrays")
 dev.off()
-
-#normalization
-
-setwd(paste("../normalization/",sep=""))
-
-rmall<-rma(celfiles)
-write.exprs(rmall, "rma.txt")
-masfile<-mas5(celfiles)
-write.exprs(rmall,"mas5.txt")

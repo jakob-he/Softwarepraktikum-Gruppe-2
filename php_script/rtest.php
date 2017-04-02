@@ -1,8 +1,5 @@
 <?php
-if(isset($_GET['N']))
-{
-  $N = $_GET['N'];
- 
-  exec("Rscript ../r_script/imageplot.R $N");
-}
+set_time_limit(500);
+exec("Rscript ../r_script/rtest.R");
+echo("OK");
 ?>

@@ -10,13 +10,13 @@ body {
   height: 200px;
   margin-left: auto ;
   margin-right: auto ;
-  border: 3px dashed #000;
-  color: #000;
+  border: 3px dashed #ccc;
+  color: #ccc;
   line-height: 200px;
   text-align: center;
 }
 
 .dropzone.dragover {
-  border-color:#FF0000;
-  color:#FF0000;
+  border-color:#000;
+  color:#000;
 }
