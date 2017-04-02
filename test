@@ -1,8 +1,0 @@
-<HTML>
-   <HEAD>
-      <TITLE>Testseite</TITLE>
-   </HEAD>
-   <BODY>
-      <P>Es ist <?php$t=time();echo($t . "<br>");echo(date("Y-m-d",$t));?>
-   </BODY>
-</HTML>
