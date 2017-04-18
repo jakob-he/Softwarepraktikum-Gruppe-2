@@ -18,17 +18,8 @@ outputdirnorm<-dir.create("../output/current/normalization/")
 #plots(density,RNA deg and MA)
 
 
-#normalization
 
-setwd("../output/current/normalization/")
-
-rmall<-rma(celfiles)
-write.exprs(rmall, "rma.txt")
-masfile<-mas5(celfiles)
-write.exprs(rmall,"mas5.txt")
-
-
-setwd("../plots/")
+setwd("../output/current/plots/")
 
 #functions
 

@@ -1,10 +1,17 @@
 body {
   padding-top: 50px;
+  font-family: Lato;
 }
+
+h1 {
+  font-family: Lato Light;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
+
 .dropzone {
   position: relative;
   width: 600px;
@@ -18,13 +25,13 @@ body {
 }
 
 .dropzone.dragover {
-  border-color:#10ff00;
-  color:#000;
+  border-color: #10ff00;
+  color: #000;
 }
 
 .Options {
   margin-right: 200px;
-  float:right;
+  float: right;
 }
 
 .checkboxes {

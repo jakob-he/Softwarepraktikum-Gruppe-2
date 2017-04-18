@@ -23,13 +23,13 @@ body.breadcrumb-fixed {
 /* ---------------------------------------------------------------------------------------------- */
 
 #directory-list-header {
-    font-family: 'Cutive Mono', monospace, serif;
+    font-family: Lato;
     font-weight: bold;
     padding: 10px 15px;
 }
 
 #directory-listing {
-    font-family: 'Cutive Mono', monospace, serif;
+    font-family: Lato;
 }
 
 #directory-listing li {

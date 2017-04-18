@@ -1,0 +1,75 @@
+Lade nötiges Paket: affy
+Lade nötiges Paket: BiocGenerics
+Lade nötiges Paket: methods
+Lade nötiges Paket: parallel
+
+Attache Paket: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit, which, which.max, which.min
+
+Lade nötiges Paket: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Lade nötiges Paket: simpleaffy
+Lade nötiges Paket: genefilter
+Lade nötiges Paket: gcrma
+Lade nötiges Paket: affydata
+     Package    LibPath                                          Item      
+[1,] "affydata" "/home/jakobh/R/x86_64-pc-linux-gnu-library/3.3" "Dilution"
+     Title                        
+[1,] "AffyBatch instance Dilution"
+Lade nötiges Paket: affyQCReport
+Lade nötiges Paket: lattice
+Lade nötiges Paket: bioDist
+Lade nötiges Paket: KernSmooth
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+[1] TRUE
+
+Background correcting
+Normalizing
+Calculating Expression
+Warnmeldungen:
+1: replacing previous import ‘AnnotationDbi::tail’ by ‘utils::tail’ when loading ‘hgu133plus2cdf’ 
+2: replacing previous import ‘AnnotationDbi::head’ by ‘utils::head’ when loading ‘hgu133plus2cdf’ 
+background correction: mas 
+PM/MM correction : mas 
+expression values: mas 
+background correcting...done.
+54675 ids to be processed
+|                    |
+|####################|
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+The "ward" method has been renamed to "ward.D"; note new "ward.D2"
+Fehler in graphics:::plotHclust(n1, merge, height, order(x$order), hang,  : 
+  ungültige Eingabe für Dendrogramm
+Ruft auf: clusterFun -> plot -> plot -> plot.hclust -> <Anonymous>
+Ausführung angehalten

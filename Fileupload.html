@@ -29,23 +29,19 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="Fileupload.html">File Upload</a></li>
-          <li><a href="output/index.php"> Download </a></li>
+          <li class="active"><a href="Fileupload.html"> UPLOAD</a></li>
+          <li><a href="output/index.php"> DOWNLOAD </a></li>
         </ul>
       </div>
     </div>
   </nav>
 
 
-  </script>
   <div class="container">
 
     <div class="starter-template">
-      <h1>File Upload</h1>
-      <p class="lead">
-        <div id="uploads"></div>
+      <h1>UPLOAD</h1>
     </div>
-    </p>
   </div>
 
   <div class="dropzone" id="dropzone">
@@ -104,40 +100,23 @@
   </script>
 
 
-          <script>
-          function analyise(){
-          var analysis= new XMLHttpRequest();
-          analysis.open("post","php_script/Qualitycontrol.php");
-          analysis.send("go");
-
-          analysis.onload = function() {
-            var analysisdata = this.responseText;
-
-            document.getElementById('dropzone').innerHTML = "<b>analysing..<b>";
-          }
-        }
-          </script>
-
-  <script>
-    function showDiv() {
-      document.getElementById("checkboxes").style.display = "block";
-    }
-  </script>
-
-
   <div class="Options" id="Options" style="display:none">
     <ul id="buttons">
-    <li><input type="button" class="btn btn-primary" name="answer" value="Full Analysis" onclick="analyise()" /></li>
-    <br>
-    <li><button type="button" class="btn btn-success">Just Plots (no normalization!)</button></li>
-    <br>
-    <li><input type="button" class="btn btn-success" name="answer" value="Customize" onclick="showDiv()" /></li>
-  </ul>
+      <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Full Analysis" onclick="analyizeall()" /></li>
+      <br>
+      <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Just Plots" onclick="analyizeplots()" /></button>
+      </li>
+      <br>
+      <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Customize" onclick="showDiv()" /></li>
+    </ul>
     <div class="checkboxes" id="checkboxes" style="display:none">
       <form method="post">
         <fieldset>
           <input type="checkbox" name="plot" value="intensity plot" />Intesity Plot<br />
           <input type="checkbox" name="plot" value="RNA-degration plot" />RNA-degration plot<br />
+          <input type="checkbox" name="normalization" value="MAS-normalization" />QC-plot <br />
+          <input type="checkbox" name="plot" value="intensity plot" />Correlation-Plot<br />
+          <input type="checkbox" name="plot" value="RNA-degration plot" />RMA-normalization<br />
           <input type="checkbox" name="normalization" value="MAS-normalization" />MAS-normalization<br />
           <input type="submit" value="Go" />
         </fieldset>
