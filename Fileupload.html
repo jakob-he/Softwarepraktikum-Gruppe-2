@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Microarray Analysis">
+  <meta name="author" content="Colin Gundlach, Jakob Hertzberg">
+  <title>Microarray Analysis</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/styles.js"></script>
+  <link href="./css/style.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">Microarray Analysis</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="Fileupload.html">File Upload</a></li>
+          <li><a href="output/index.php"> Download </a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  </script>
+  <div class="container">
+
+    <div class="starter-template">
+      <h1>File Upload</h1>
+      <p class="lead">
+        <div id="uploads"></div>
+    </div>
+    </p>
+  </div>
+
+  <div class="dropzone" id="dropzone">
+    <b>Drag your .CEL files here!</b>
+  </div>
+
+  <script>
+    (function() {
+      var dropzone = document.getElementById("dropzone");
+
+      var upload = function(files) {
+        var formData = new FormData(),
+          xhr = new XMLHttpRequest(),
+          x;
+
+        for (x = 0; x < files.length; x = x + 1) {
+          formData.append("file[]", files[x]);
+        }
+
+        xhr.onload = function() {
+          var uploaddata = this.responseText;
+
+          document.getElementById('dropzone').innerHTML = uploaddata;
+          $('#dropzone').animate({
+            "margin-left": "50px",
+          });
+          document.getElementById("dropzone").style.cssFloat = "left";
+          document.getElementById("Options").style.display = "block";
+
+        }
+
+        xhr.open("post", "php_script/upload.php");
+        xhr.send(formData);
+        document.getElementById('dropzone').innerHTML = "<b>uploading<b>";
+
+
+      }
+
+      dropzone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = "dropzone";
+        upload(e.dataTransfer.files);
+      };
+
+      dropzone.ondragover = function() {
+        this.className = "dropzone dragover"
+        return false;
+      };
+
+      dropzone.ondragleave = function() {
+        this.className = "dropzone"
+        return false;
+      };
+
+    }());
+  </script>
+
+
+          <script>
+          function analyise(){
+          var analysis= new XMLHttpRequest();
+          analysis.open("post","php_script/Qualitycontrol.php");
+          analysis.send("go");
+
+          analysis.onload = function() {
+            var analysisdata = this.responseText;
+
+            document.getElementById('dropzone').innerHTML = "<b>analysing..<b>";
+          }
+        }
+          </script>
+
+  <script>
+    function showDiv() {
+      document.getElementById("checkboxes").style.display = "block";
+    }
+  </script>
+
+
+  <div class="Options" id="Options" style="display:none">
+    <ul id="buttons">
+    <li><input type="button" class="btn btn-primary" name="answer" value="Full Analysis" onclick="analyise()" /></li>
+    <br>
+    <li><button type="button" class="btn btn-success">Just Plots (no normalization!)</button></li>
+    <br>
+    <li><input type="button" class="btn btn-success" name="answer" value="Customize" onclick="showDiv()" /></li>
+  </ul>
+    <div class="checkboxes" id="checkboxes" style="display:none">
+      <form method="post">
+        <fieldset>
+          <input type="checkbox" name="plot" value="intensity plot" />Intesity Plot<br />
+          <input type="checkbox" name="plot" value="RNA-degration plot" />RNA-degration plot<br />
+          <input type="checkbox" name="normalization" value="MAS-normalization" />MAS-normalization<br />
+          <input type="submit" value="Go" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

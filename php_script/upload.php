@@ -17,5 +17,6 @@ if (!empty($_FILES["file"]["name"][0])) { //test if array is empty
       (move_uploaded_file($_FILES["file"]["tmp_name"][$position], $current  . $name));
   }
 }
-echo "OK";
+$fi = new FilesystemIterator("../uploads/current/", FilesystemIterator::SKIP_DOTS);
+echo "<b>".iterator_count($fi).(" files uploaded<b>");
 ?>
