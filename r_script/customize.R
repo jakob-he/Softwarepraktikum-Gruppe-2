@@ -6,6 +6,8 @@ require("bioDist")
 require("gtools")
 
 files<-list.celfiles("../uploads/current")
+groups<-read.table("../uploads/current/groups.txt")
+customize<-read.table("../uploads/current/customize.txt")
 
 celfiles<-ReadAffy(filenames=paste("../uploads/current/",files,sep=""))
 
@@ -18,21 +20,53 @@ outputdirnorm<-dir.create("../output/current/normalization/")
 
 #plots(density,RNA deg and MA)
 
+funcstring<-c("densityplot","intensitybox","rnadeg","qcplot","correlFun","clusterFun","createimages","norm")
+
+for (i in 1:8){
+  if (customize[i,1]=="true"){
+    f<-get(funcstring[i])
+    f(celfiles)
+  }
+}
 
 #normalization
 
+norm <- function(Data){
 setwd("../output/current/normalization/")
 
-rmall<-rma(celfiles)
+rmall<-rma(Data)
 write.exprs(rmall, "rma.txt")
-masfile<-mas5(celfiles)
-write.exprs(rmall,"mas5.txt")
+masfile<-mas5(Data)
+write.exprs(masfile,"mas5.txt")
 
-slroutput<-dir.create("./Signallogratio")
+expr1<-exprs(rmall)
+
+group1<-c()
+group2<-c()
+for (i in 1:length(groups[,1])){
+  if(groups[i,1]=="true"){
+    group2<-cbind(group2,expr1[,i])
+  }
+  else{
+    group1<-cbind(group1,expr1[,i])
+  }
+}
 
 
+mean1 <- apply(group1, 1, FUN=mean)
+mean2 <- apply(group2, 1, FUN=mean)
 
-setwd("../plots/")
+fc <- foldchange(mean1, mean2)
+slr <- foldchange2logratio(fc, base=2)
+result <- cbind(expr1,Foldchange=fc, Logratio=slr)
+
+write.table(result, "Foldchange_slr.txt")
+
+setwd("../../../r_script")
+}
+
+
+setwd("../output/current/plots/")
 
 #functions
 
@@ -156,11 +190,8 @@ qcplot <- function(Data){
   dev.off()
 }
 
-
-
-rnadeg(celfiles)
-intensitybox(celfiles)
-intensityhist(celfiles)
-correlFun(celfiles)
-clusterFun(celfiles)
-qcplot(celfiles)
+createimages<-function(Data){
+  png(filename = "image.png")
+  image(celfile,col=rainbow(6))
+  dev.off()
+}

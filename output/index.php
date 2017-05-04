@@ -14,20 +14,19 @@
 
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
           <a class="navbar-brand" href="#">Microarray Analysis</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="../Fileupload.html">UPLOAD</a></li>
-            <li class="active"><a href="index.php">DOWNLOAD</a></li>
+            <li><a href="./../Fileupload.html"> UPLOAD</a></li>
+            <li class="active"><a href="index.php"> DOWNLOAD </a></li>
           </ul>
         </div>
       </div>
@@ -100,7 +99,7 @@
                         <ul id="page-top-download-all" class="nav navbar-nav">
                             <li>
                                 <a href="?zip=<?php echo $lister->getDirectoryPath(); ?>" id="download-all-link">
-                                    <i class="fa fa-download fa-lg"></i> Click here to download current directory!
+                                    <i class="fa fa-download fa-lg"></i> Download current directory as a .zip file!
                                 </a>
                             </li>
                         </ul>

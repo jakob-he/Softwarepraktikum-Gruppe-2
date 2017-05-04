@@ -9,30 +9,30 @@
   <meta name="author" content="Colin Gundlach, Jakob Hertzberg">
   <title>Microarray Analysis</title>
   <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="./js/styles.js"></script>
+  <link href="./css/yesno.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./js/functions.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="#">Microarray Analysis</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="Fileupload.html"> UPLOAD</a></li>
-          <li><a href="output/index.php"> DOWNLOAD </a></li>
-        </ul>
-      </div>
+      <a class="navbar-brand" href="#">Microarray Analysis</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="Fileupload.html"> UPLOAD</a></li>
+        <li><a href="output/index.php"> DOWNLOAD </a></li>
+      </ul>
+    </div>
     </div>
   </nav>
 
@@ -45,58 +45,32 @@
   </div>
 
   <div class="dropzone" id="dropzone">
-    <b>Drag your .CEL files here!</b>
+    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+    <label for="file-3"><span>Choose .CEL files or drag them here</span></label>
   </div>
 
   <script>
-    (function() {
-      var dropzone = document.getElementById("dropzone");
+  document.getElementById('file-3').addEventListener('change', clickupload, false);
+  var dropzone = document.getElementById("dropzone");
+  (function() {
 
-      var upload = function(files) {
-        var formData = new FormData(),
-          xhr = new XMLHttpRequest(),
-          x;
+    dropzone.ondrop = function(e) {
+      e.preventDefault();
+      this.className = "dropzone";
+      upload(e.dataTransfer.files);
+    };
 
-        for (x = 0; x < files.length; x = x + 1) {
-          formData.append("file[]", files[x]);
-        }
+    dropzone.ondragover = function() {
+      this.className = "dropzone dragover"
+      return false;
+    };
 
-        xhr.onload = function() {
-          var uploaddata = this.responseText;
+    dropzone.ondragleave = function() {
+      this.className = "dropzone"
+      return false;
+    };
 
-          document.getElementById('dropzone').innerHTML = uploaddata;
-          $('#dropzone').animate({
-            "margin-left": "50px",
-          });
-          document.getElementById("dropzone").style.cssFloat = "left";
-          document.getElementById("Options").style.display = "block";
-
-        }
-
-        xhr.open("post", "php_script/upload.php");
-        xhr.send(formData);
-        document.getElementById('dropzone').innerHTML = "<b>uploading<b>";
-
-
-      }
-
-      dropzone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = "dropzone";
-        upload(e.dataTransfer.files);
-      };
-
-      dropzone.ondragover = function() {
-        this.className = "dropzone dragover"
-        return false;
-      };
-
-      dropzone.ondragleave = function() {
-        this.className = "dropzone"
-        return false;
-      };
-
-    }());
+  }());
   </script>
 
 
@@ -104,25 +78,33 @@
     <ul id="buttons">
       <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Full Analysis" onclick="analyizeall()" /></li>
       <br>
-      <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Just Plots" onclick="analyizeplots()" /></button>
-      </li>
+      <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Plots" onclick="analyizeplots()" /></li>
       <br>
       <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Customize" onclick="showDiv()" /></li>
     </ul>
     <div class="checkboxes" id="checkboxes" style="display:none">
-      <form method="post">
-        <fieldset>
-          <input type="checkbox" name="plot" value="intensity plot" />Intesity Plot<br />
-          <input type="checkbox" name="plot" value="RNA-degration plot" />RNA-degration plot<br />
-          <input type="checkbox" name="normalization" value="MAS-normalization" />QC-plot <br />
-          <input type="checkbox" name="plot" value="intensity plot" />Correlation-Plot<br />
-          <input type="checkbox" name="plot" value="RNA-degration plot" />RMA-normalization<br />
-          <input type="checkbox" name="normalization" value="MAS-normalization" />MAS-normalization<br />
-          <input type="submit" value="Go" />
-        </fieldset>
-      </form>
+          <input type="checkbox" name="plot" value="Intensityplot" />  Intensityplot (Histogramm)<br />
+          <input type="checkbox" name="plot" value="Intensityplot" />  Intensityplot (Boxplot)<br />
+          <input type="checkbox" name="plot" value="RNA-degration plot" />  RNA-degration plot<br />
+          <input type="checkbox" name="normalization" value="MAS-normalization" />  QC-plot <br />
+          <input type="checkbox" name="plot" value="intensity plot" />  Correlation-Plot<br />
+          <input type="checkbox" name="plot" value="intensity plot" />  Dendogramm<br />
+          <input type="checkbox" name="plot" value="Chip images" />  Chipimages<br />
+          <input type="checkbox" name="plot" value="RNA-degration plot" />  Normalization + foldchange and slr<br />
+          <input type="button" class="btn btn-default" name="answer" value="Start Analysis" onclick="customize()" />
     </div>
   </div>
+
+
+  <div class="container">
+    <div id="tabelle" class="settings">
+    </div>
+  </div>
+
+
+
+
+
 
 
 

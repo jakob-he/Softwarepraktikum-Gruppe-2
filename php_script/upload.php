@@ -12,11 +12,12 @@ if (!file_exists($current)) {
 
 
 
+
 if (!empty($_FILES["file"]["name"][0])) { //test if array is empty
   foreach($_FILES["file"]["name"] as $position => $name) { //upload each file
       (move_uploaded_file($_FILES["file"]["tmp_name"][$position], $current  . $name));
   }
 }
-$fi = new FilesystemIterator("../uploads/current/", FilesystemIterator::SKIP_DOTS);
-echo "<b>".iterator_count($fi).(" files uploaded<b>");
+
+echo "OK";
 ?>
