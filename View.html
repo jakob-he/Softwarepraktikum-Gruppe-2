@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Microarray Analysis">
+  <meta name="author" content="Colin Gundlach, Jakob Hertzberg">
+  <title>Microarray Analysis</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/csvtable.css" type="text/css" />
+  <link href="./css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./js/functions.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="./js/jquery.csvToTable.js"></script>
+  <script type="text/javascript" src="./js/jquery.tablesorter.dev.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+      <a class="navbar-brand" href="#">Microarray Analysis</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="Fileupload.html"> UPLOAD</a></li>
+        <li class="active"><a href="View.html"> VIEW </a> </li>
+        <li><a href="output/index.php"> DOWNLOAD </a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+<br>
+<br>
+
+<div id="Table1">
+</div>
+
+<script>
+$('#Table1').CSVToTable('./output/current/plots/Foldchange_slr.csv', {
+  loadingImage: 'images/loading.gif',
+  startLine: 1,
+  headers: ['Genes', 'Group1', 'Group2','Foldchange','Signallogratio']
+ }
+).bind("loadComplete",function() {
+$('#Table1').find('table').tablesorter();
+});;
+</script>
+
+
+
+
+</body>
+
+</html>

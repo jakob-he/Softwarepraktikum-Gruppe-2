@@ -32,11 +32,11 @@ for (i in 1:8){
 #normalization
 
 norm <- function(Data){
-setwd("../output/current/normalization/")
+setwd("../normalization/")
 
-rmall<-rma(Data)
+rmall<-rma(celfiles)
 write.exprs(rmall, "rma.txt")
-masfile<-mas5(Data)
+masfile<-mas5(celfiles)
 write.exprs(masfile,"mas5.txt")
 
 expr1<-exprs(rmall)
@@ -58,11 +58,11 @@ mean2 <- apply(group2, 1, FUN=mean)
 
 fc <- foldchange(mean1, mean2)
 slr <- foldchange2logratio(fc, base=2)
-result <- cbind(expr1,Foldchange=fc, Logratio=slr)
+result <- cbind(Group1=mean1,Group2=mean2,Foldchange=fc, Logratio=slr)
 
-write.table(result, "Foldchange_slr.txt")
+write.csv(result, "Foldchange_slr.txt",col.names="FALSE",row.names="FALSE")
 
-setwd("../../../r_script")
+setwd("../plots")
 }
 
 

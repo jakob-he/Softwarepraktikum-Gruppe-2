@@ -12,7 +12,7 @@
   <link href="./css/yesno.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
   <script type="text/javascript" src="./js/functions.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 
@@ -30,6 +30,7 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="Fileupload.html"> UPLOAD</a></li>
+        <li><a href="View.html"> VIEW </a> </li>
         <li><a href="output/index.php"> DOWNLOAD </a></li>
       </ul>
     </div>
@@ -50,27 +51,27 @@
   </div>
 
   <script>
-  document.getElementById('file-3').addEventListener('change', clickupload, false);
-  var dropzone = document.getElementById("dropzone");
-  (function() {
+    document.getElementById('file-3').addEventListener('change', clickupload, false);
+    var dropzone = document.getElementById("dropzone");
+    (function() {
 
-    dropzone.ondrop = function(e) {
-      e.preventDefault();
-      this.className = "dropzone";
-      upload(e.dataTransfer.files);
-    };
+      dropzone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = "dropzone";
+        upload(e.dataTransfer.files);
+      };
 
-    dropzone.ondragover = function() {
-      this.className = "dropzone dragover"
-      return false;
-    };
+      dropzone.ondragover = function() {
+        this.className = "dropzone dragover"
+        return false;
+      };
 
-    dropzone.ondragleave = function() {
-      this.className = "dropzone"
-      return false;
-    };
+      dropzone.ondragleave = function() {
+        this.className = "dropzone"
+        return false;
+      };
 
-  }());
+    }());
   </script>
 
 
@@ -83,15 +84,15 @@
       <li><input type="button" class="btn btn-default btn-lg" name="answer" value="Customize" onclick="showDiv()" /></li>
     </ul>
     <div class="checkboxes" id="checkboxes" style="display:none">
-          <input type="checkbox" name="plot" value="Intensityplot" />  Intensityplot (Histogramm)<br />
-          <input type="checkbox" name="plot" value="Intensityplot" />  Intensityplot (Boxplot)<br />
-          <input type="checkbox" name="plot" value="RNA-degration plot" />  RNA-degration plot<br />
-          <input type="checkbox" name="normalization" value="MAS-normalization" />  QC-plot <br />
-          <input type="checkbox" name="plot" value="intensity plot" />  Correlation-Plot<br />
-          <input type="checkbox" name="plot" value="intensity plot" />  Dendogramm<br />
-          <input type="checkbox" name="plot" value="Chip images" />  Chipimages<br />
-          <input type="checkbox" name="plot" value="RNA-degration plot" />  Normalization + foldchange and slr<br />
-          <input type="button" class="btn btn-default" name="answer" value="Start Analysis" onclick="customize()" />
+      <input type="checkbox" name="plot" value="Intensityplot" /> Intensityplot (Histogramm)<br />
+      <input type="checkbox" name="plot" value="Intensityplot" /> Intensityplot (Boxplot)<br />
+      <input type="checkbox" name="plot" value="RNA-degration plot" /> RNA-degration plot<br />
+      <input type="checkbox" name="normalization" value="MAS-normalization" /> QC-plot <br />
+      <input type="checkbox" name="plot" value="intensity plot" /> Correlation-Plot<br />
+      <input type="checkbox" name="plot" value="intensity plot" /> Dendogramm<br />
+      <input type="checkbox" name="plot" value="Chip images" /> Chipimages<br />
+      <input type="checkbox" name="plot" value="RNA-degration plot" /> Normalization + foldchange and slr<br />
+      <input type="button" class="btn btn-default" name="answer" value="Start Analysis" onclick="customize()" />
     </div>
   </div>
 
@@ -100,7 +101,6 @@
     <div id="tabelle" class="settings">
     </div>
   </div>
-
 
 
 

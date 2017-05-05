@@ -7,9 +7,8 @@
     <meta name="description" content="Microarray Analysis">
     <meta name="author" content="Colin Gundlach, Jakob Hertzberg">
     <title>Microarray Analysis</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -26,6 +25,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="./../Fileupload.html"> UPLOAD</a></li>
+            <li><a href="./../View.html"> VIEW </a></li>
             <li class="active"><a href="index.php"> DOWNLOAD </a></li>
           </ul>
         </div>
@@ -106,6 +106,7 @@
 <?php endif; ?>
 </div>
 
-</body>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link href="../css/style.css" rel="stylesheet">
+</body>
 </html>

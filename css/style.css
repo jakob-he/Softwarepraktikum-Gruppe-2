@@ -4,57 +4,54 @@ body {
 }
 
 .inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
-.inputfile + label {
-    max-width: 80%;
-    font-size: 1.25rem;
-    /* 20px */
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    padding: 0.625rem 1.25rem;
-    /* 10px 20px */
+.inputfile+label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
 }
 
-.no-js .inputfile + label {
-    display: none;
+.no-js .inputfile+label {
+  display: none;
 }
 
-.inputfile:focus + label,
-.inputfile.has-focus + label {
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px;
+.inputfile:focus+label, .inputfile.has-focus+label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 
-.inputfile + label svg {
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-    fill: currentColor;
-    margin-top: -0.25em;
-    /* 4px */
-    margin-right: 0.25em;
-    /* 4px */
+.inputfile+label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  /* 4px */
+  margin-right: 0.25em;
+  /* 4px */
 }
 
-.inputfile-3 + label {
-    color: #d3394c;
+.inputfile-3+label {
+  color: #d3394c;
 }
 
-.inputfile-3:focus + label,
-.inputfile-3.has-focus + label,
-.inputfile-3 + label:hover {
-    color: #722040;
+.inputfile-3:focus+label, .inputfile-3.has-focus+label, .inputfile-3+label:hover {
+  color: #722040;
 }
 
 h1 {
@@ -78,7 +75,7 @@ h1 {
 }
 
 .dropzone.dragover {
-  border-color:  #d3394c;
+  border-color: #d3394c;
 }
 
 .Options {
@@ -96,4 +93,25 @@ h1 {
 
 ul {
   list-style-type: none;
+}
+
+img {
+  width: auto;
+  box-shadow: 0px 0px 20px #cecece;
+  -moz-transform: scale(0.7);
+  -moz-transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  -webkit-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -ms-transition-duration: 0.6s;
+}
+
+img:hover {
+  box-shadow: 20px 20px 20px #dcdcdc;
+  -moz-transform: scale(0.8);
+  -moz-transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -ms-transition-duration: 0.6s;
 }
